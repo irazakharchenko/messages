@@ -3,14 +3,15 @@ public class MailSender {
     public boolean sendMail(MailInfo mi){
         try{
 
-            message += "Dear";
+            message += mi.getHeader().getHeader();
             if(mi.getClient().isWoman()){
                 message += " Ms";
             }
             else{
                 message += " Mr";
             }
-            message += mi.getClient().getName() + " \n";
+            if(mi.getHeader().isWith_name())
+                message += mi.getClient().getName() + " \n";
             if(mi.getHeader() != null)
                 message += mi.getHeader() + "\n";
             else {
@@ -20,10 +21,11 @@ public class MailSender {
             System.out.println(message);
             return true;
         }
-        catch (Error e){
+        catch (Exception e) {
             System.out.println("Something went wrong.\n");
             return false;
         }
+
 
     }
 }

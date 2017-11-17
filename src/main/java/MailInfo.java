@@ -3,13 +3,13 @@ import java.util.ArrayList;
 public class MailInfo {
     private Client client;
     private int mailCode;
-    private ArrayList<String> mailReason = new ArrayList<String>();
+    private ArrayList<ExampleMail> mailReason = new  ArrayList<ExampleMail>();
+
 
     {
-        mailReason.add(" Happy Birthday!");
-        mailReason.add(" Happy Universary!");
-        mailReason.add(" Welcome to Lviv!");
-        mailReason.add(" Business");
+        mailReason.add(new ExampleMail("Dear ", true, " Happpy B-day!!!"));
+        mailReason.add(new ExampleMail("GJC", false, " Happy Holidays."));
+
     }
 
     public Client getClient() {
@@ -35,9 +35,9 @@ public class MailInfo {
 
     }
 
-    public String getHeader(){
+    public ExampleMail getHeader() throws Exception{
         if(getMailCode() < mailReason.size())
             return mailReason.get(getMailCode());
-        return null;
+        throw new NullPointerException();
     }
 }

@@ -19,8 +19,10 @@ public class MailBox {
             }
 
         }
-        if(check)
+        if(check){
+            ms = new MailSender();
             return true;
+        }
         }
         catch (Error e){
 
